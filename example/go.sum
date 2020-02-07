@@ -103,6 +103,8 @@ github.com/treeder/gcputils v0.0.1 h1:CwBpDpd5qxAdzTBZGi4IhGNNAITn2vn+9I9K5fV0w+
 github.com/treeder/gcputils v0.0.1/go.mod h1:rGsMRanQiHuS04DEx2wG4PA/4ngEjGXfqGFJlTdImKA=
 github.com/treeder/gcputils v0.0.3 h1:GiBW8zIFcUVszLCV4MCE2xo7IqOHMSLvqQrkGXq8dU0=
 github.com/treeder/gcputils v0.0.3/go.mod h1:rGsMRanQiHuS04DEx2wG4PA/4ngEjGXfqGFJlTdImKA=
+github.com/treeder/gcputils v0.0.4 h1:n9VyRFU5qUl0b/iDDV1LKFtJZGIhkV7ZWaDdYay+Zqo=
+github.com/treeder/gcputils v0.0.4/go.mod h1:chGpZ9oPybX0sWO318+JLuwYvsR2BitP2DWmsm+emGg=
 github.com/treeder/goapibase v0.0.0-20200207142622-0e59b3d58f30 h1:w2Vli5LCkLVsoQvcIC795yI/DTr22LOXlzpzPcpWHFI=
 github.com/treeder/goapibase v0.0.0-20200207142622-0e59b3d58f30/go.mod h1:9B5juTSlWCTvN/lOOBV3RYmenonO3d+joRZG6omoRNc=
 github.com/treeder/gotils v0.0.4/go.mod h1:92E7BJJG5BELkbJ8laA4fX6Ya6xPtdm0GRcSAAtEqNY=

@@ -29,8 +29,14 @@ func main() {
 	}
 	ctx = gotils.WithLogger(ctx, l)
 
-	gProjectID := gcputils.GetEnvVar("G_PROJECT_ID", "")
-	opts, err := gcputils.CredentialsOptionsFromEnv("G_KEY")
+	// gProjectID := gcputils.GetEnvVar("G_PROJECT_ID", "")
+	// gProjectID2, err := metadata.ProjectID()
+	// if err != nil {
+	// 	fmt.Println("gprojectID2 error:", err)
+	// }
+	// fmt.Println("PROJECT_ID FROM METADATA: ", gProjectID2)
+	// CAN ALSO GET FROM THE JSON
+	opts, gProjectID, err := gcputils.CredentialsAndProjectIDFromEnv("G_KEY", "G_PROJECT_ID")
 	if err != nil {
 		log.Fatal(err)
 	}

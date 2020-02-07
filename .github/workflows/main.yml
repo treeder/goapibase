@@ -21,9 +21,9 @@ on:
 
 # Environment variables available to all jobs and steps in this workflow
 env:
-  PROJECT_ID: ${{ secrets.G_PROJECT_ID }}
+  G_PROJECT_ID: ${{ secrets.G_PROJECT_ID }}
   RUN_REGION: us-central1
-  SERVICE_NAME: myapp
+  G_SERVICE_NAME: ${{ secrets.G_SERVICE_NAME }}
 
 jobs:
   setup-build-deploy:
@@ -44,19 +44,19 @@ jobs:
       # Configure gcloud CLI
       - name: gcloud Set up
         run: |
-          gcloud config set project $PROJECT_ID
+          gcloud config set project $G_PROJECT_ID
 
       # Build and push image to Google Container Registry
       - name: Build
       # REMOVE `example/` below if building at root directory
         run: |
-          gcloud builds submit example/ -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+          gcloud builds submit example/ -t gcr.io/$G_PROJECT_ID/$G_SERVICE_NAME:$GITHUB_SHA
 
       # Deploy image to Cloud Run
       - name: Deploy
         run: |
-          gcloud run deploy $SERVICE_NAME \
+          gcloud run deploy $G_SERVICE_NAME \
             --region $RUN_REGION \
-            --image gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA \
-            --platform managed
+            --image gcr.io/$G_PROJECT_ID/$G_SERVICE_NAME:$GITHUB_SHA \
+            --platform managed \
             --allow-unauthenticated

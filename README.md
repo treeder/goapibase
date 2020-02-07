@@ -12,20 +12,49 @@
   * search for "Cloud Run API" and enable it.
   * In IAM & admin, choose the firebase-adminsdk service account, click the edit (pencil) and add Project Owner role.
 
-## Set env vars
+## Setup local environment
 
-```
+Set local env vars:
+
+```sh
 export G_PROJECT_ID=FIREBASE_ID
 export G_KEY=BASE64_ENCODED_STRING_FROM_ABOVE
+export G_SERVICE_NAME=example
 ```
 
-Easiest way is to create a file with lines like above, eg: secrets.env (be sure to .gitignore that). 
+Easiest way is to create a file with lines like above, eg: `secrets.env` (be sure to .gitignore that), then 
+just `source secrets.env`. 
+
+Set cgloud project ID:
+
+```sh
+gcloud config set project $G_PROJECT_ID
+```
+
+### Also set these in GitHub Secrets
+
+Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the above env vars.
 
 ## Code
 
 Copy [main.go](example/main.go) and start from there.
 
+```go
+go build
+./example
+```
+
+## Deploy
+
+Copy the [example Makefile](example/Makefile) and put into your project dir.
+
+Then run:
+
+```sh
+make deploy
+```
+
 ## Auto Deploying
 
-Follow [README here](https://github.com/GoogleCloudPlatform/github-actions/tree/master/example-workflows) then
-setup [workflow here](https://github.com/GoogleCloudPlatform/github-actions/tree/master/example-workflows/cloud-run).
+Copy the GitHub action in this repo at [.github/worksflows/main.yml](.github/worksflows/main.yml) and put
+it in the same location in your repo. Commit it and push it then check the Actions tab for progress.
