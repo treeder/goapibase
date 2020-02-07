@@ -48,6 +48,7 @@ jobs:
 
       # Build and push image to Google Container Registry
       - name: Build
+      # REMOVE `example/` below if building at root directory
         run: |
           gcloud builds submit example/ -t gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
 
@@ -58,3 +59,4 @@ jobs:
             --region $RUN_REGION \
             --image gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA \
             --platform managed
+            --allow-unauthenticated

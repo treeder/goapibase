@@ -108,6 +108,8 @@ github.com/treeder/goapibase v0.0.0-20200207142622-0e59b3d58f30/go.mod h1:9B5juT
 github.com/treeder/gotils v0.0.4/go.mod h1:92E7BJJG5BELkbJ8laA4fX6Ya6xPtdm0GRcSAAtEqNY=
 github.com/treeder/gotils v0.0.6 h1:v7g85hMUDbBFWm5ftU7QFv+LdjLiO2USZr8DoBxdpp0=
 github.com/treeder/gotils v0.0.6/go.mod h1:92E7BJJG5BELkbJ8laA4fX6Ya6xPtdm0GRcSAAtEqNY=
+github.com/treeder/gotils v0.0.7 h1:REtBlnly49B9ZqO7q3f8oRr24Q3o8olWwix9VqREy88=
+github.com/treeder/gotils v0.0.7/go.mod h1:92E7BJJG5BELkbJ8laA4fX6Ya6xPtdm0GRcSAAtEqNY=
 go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=
 go.opencensus.io v0.22.0/go.mod h1:+kGneAE2xo2IficOXnaByMWTGM9T73dGwxeWcUqIpI8=
 go.opencensus.io v0.22.2 h1:75k/FF0Q2YM8QYo07VPddOLBslDt1MZOdEslOHvmzAs=

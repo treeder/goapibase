@@ -11,7 +11,7 @@ require (
 	github.com/treeder/firetils v0.0.5
 	github.com/treeder/gcputils v0.0.3
 	github.com/treeder/goapibase v0.0.0-20200207142622-0e59b3d58f30
-	github.com/treeder/gotils v0.0.6
+	github.com/treeder/gotils v0.0.7
 	go.opencensus.io v0.22.3 // indirect
 	go.uber.org/atomic v1.5.1 // indirect
 	go.uber.org/multierr v1.4.0 // indirect

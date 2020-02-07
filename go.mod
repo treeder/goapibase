@@ -7,6 +7,6 @@ require (
 	github.com/rs/cors v1.7.0
 	github.com/treeder/firetils v0.0.5 // indirect
 	github.com/treeder/gcputils v0.0.1 // indirect
-	github.com/treeder/gotils v0.0.6
+	github.com/treeder/gotils v0.0.7
 	go.uber.org/zap v1.11.0
 )

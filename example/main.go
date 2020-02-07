@@ -59,7 +59,7 @@ func main() {
 		w.Write([]byte("welcome"))
 	})
 	// Start server
-	_ = goapibase.Start(ctx, 8080, r)
+	_ = goapibase.Start(ctx, gotils.Port(8080), r)
 }
 
 type TmpType struct {
