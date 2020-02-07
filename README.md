@@ -6,6 +6,11 @@
 * Click database and create it
 * Go to settings -> Service accounts, click "Generate new private key". This will download a JSON file. 
 * Run `base64 -w 0 account.json` to get encoded version of the file
+* Click gear and enable billing
+* Go to https://console.cloud.google.com/ , choose your firebase project then:
+  * search for "Cloud Build API" and enable it.
+  * search for "Cloud Run API" and enable it.
+  * In IAM & admin, choose the firebase-adminsdk service account, click the edit (pencil) and add Project Owner role.
 
 ## Set env vars
 

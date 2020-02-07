@@ -9,10 +9,26 @@ import (
 	"github.com/treeder/gcputils"
 	"github.com/treeder/goapibase"
 	"github.com/treeder/gotils"
+	"go.uber.org/zap"
 )
 
 func main() {
 	ctx := context.Background()
+
+	// Setup logging
+	var err error
+	var l *zap.Logger
+	env := gcputils.GetEnvVar("ENV", "development")
+	if env == "production" {
+		l, err = zap.NewProduction()
+	} else {
+		l, err = zap.NewDevelopment()
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
+	ctx = gotils.WithLogger(ctx, l)
+
 	gProjectID := gcputils.GetEnvVar("G_PROJECT_ID", "")
 	opts, err := gcputils.CredentialsOptionsFromEnv("G_KEY")
 	if err != nil {
