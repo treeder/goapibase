@@ -42,7 +42,7 @@ func InitRouter(ctx context.Context) chi.Router {
 }
 
 func Start(ctx context.Context, port int, r chi.Router) error {
-	gotils.L(ctx).Sugar().Infof("starting API server on %v", port)
+	gotils.L(ctx).Sugar().Infof("Starting API server on port %v", port)
 	srv := http.Server{Addr: fmt.Sprintf("0.0.0.0:%v", port), Handler: chi.ServerBaseContext(ctx, r)}
 	err := srv.ListenAndServe()
 	if err != http.ErrServerClosed {
