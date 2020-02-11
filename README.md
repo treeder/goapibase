@@ -9,7 +9,7 @@
   * search for "Cloud Build API" and enable it.
   * search for "Cloud Run API" and enable it.
   * In IAM & admin, choose the firebase-adminsdk service account, click the edit (pencil) and add Project Owner role.
-* Go to settings -> Service accounts, click "Generate new private key". This will download a JSON file. 
+* Back in Firebase, go to settings -> Service accounts, click "Generate new private key". This will download a JSON file. 
 * Run `base64 -w 0 account.json` to get encoded version of the file
 
 ## Setup local environment
@@ -27,14 +27,17 @@ just `source secrets.env`.
 
 ## Code
 
-Copy [main.go](example/main.go) and start from there.
+Copy [main.go](example/main.go) as a starting point.
 
 ```go
+go mod init
 go build
 ./example
 ```
 
 ## Deploy
+
+Copy this [Dockerfile](example/Dockerfile) as is, no changes required.
 
 Set cgloud project ID:
 
