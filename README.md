@@ -53,6 +53,8 @@ Then run:
 make deploy
 ```
 
+If you need other environment variables, it'll fail here, but go look at the Cloud Run interface and you'll see the service. Click it, then click Deploy New Revision, then at the bottom you'll see "Environment Variables". Add them there. You don't need to add the google ones above. 
+
 ## Auto Deploying
 
 Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the above env vars.
