@@ -59,5 +59,5 @@ If you need other environment variables, it'll fail here, but go look at the Clo
 
 Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the above env vars.
 
-Copy the GitHub action in this repo at [.github/worksflows/main.yml](.github/worksflows/main.yml) and put
+Copy the GitHub action in this repo at [.github/workflows/main.yml](.github/worksflows/main.yml) and put
 it in the same location in your repo. Commit it and push it then check the Actions tab for progress.
