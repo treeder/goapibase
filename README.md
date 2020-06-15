@@ -61,3 +61,15 @@ Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the a
 
 Copy the GitHub action in this repo at [.github/workflows/main.yml](.github/worksflows/main.yml) and put
 it in the same location in your repo. Commit it and push it then check the Actions tab for progress.
+
+## Deploying Static App to Firebase
+
+Such as a Flutter, Angular or React app.
+
+TODO: add a flutter.yml action file to this repo (from swapper). 
+
+Need a `FIREBASE_TOKEN` for GitHub which you can get with:
+
+```sh
+firebase login:ci
+```
