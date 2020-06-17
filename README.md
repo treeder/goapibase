@@ -55,6 +55,8 @@ make deploy
 
 If you need other environment variables, it'll fail here, but go look at the Cloud Run interface and you'll see the service. Click it, then click Deploy New Revision, then at the bottom you'll see "Environment Variables". Add them there. You don't need to add the google ones above. 
 
+ALSO, if the allow-unauthenticated didn't work (I've noticed this happen), click the service, go to permissions and [see this](https://cloud.google.com/run/docs/securing/managing-access?authuser=1&_ga=2.204426711.-650445000.1578069338#making_a_service_public).
+
 ## Auto Deploying
 
 Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the above env vars.
