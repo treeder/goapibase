@@ -62,7 +62,9 @@ Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the a
 Copy the GitHub action in this repo at [.github/workflows/main.yml](.github/worksflows/main.yml) and put
 it in the same location in your repo. Commit it and push it then check the Actions tab for progress.
 
-## Deploying Static App to Firebase
+## User interface
+
+### Deploying Static App to Firebase
 
 Such as a Flutter, Angular or React app.
 
@@ -73,3 +75,10 @@ Need a `FIREBASE_TOKEN` for GitHub which you can get with:
 ```sh
 firebase login:ci
 ```
+
+### For firebase auth / google sign in
+
+You'll need to whitelist the \*.web.app domains from firebase to use the web.app version. Go to `https://console.cloud.google.com/apis/credentials`, edit the OAuth 2.0 Client ID that says `Web client (auto created by Google Service)` and add the domains there. 
+
+TODO: probably have to do the same on the production domains.
+
