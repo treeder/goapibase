@@ -59,6 +59,28 @@ func SetupCtx(next http.Handler) http.Handler {
 	})
 }
 
+// func Recoverer(next http.Handler) http.Handler {
+// 	fn := func(w http.ResponseWriter, r *http.Request) {
+// 		defer func() {
+// 			if rvr := recover(); rvr != nil && rvr != http.ErrAbortHandler {
+
+// 				logEntry := GetLogEntry(r)
+// 				if logEntry != nil {
+// 					logEntry.Panic(rvr, debug.Stack())
+// 				} else {
+// 					PrintPrettyStack(rvr)
+// 				}
+
+// 				w.WriteHeader(http.StatusInternalServerError)
+// 			}
+// 		}()
+
+// 		next.ServeHTTP(w, r)
+// 	}
+
+// 	return http.HandlerFunc(fn)
+// }
+
 // WithValue is a middleware that sets a given key/value in a context chain.
 func WithValue(key interface{}, val interface{}) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
