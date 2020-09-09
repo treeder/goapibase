@@ -53,9 +53,34 @@ Then run:
 make deploy
 ```
 
+If you need other environment variables, it'll fail here, but go look at the Cloud Run interface and you'll see the service. Click it, then click Deploy New Revision, then at the bottom you'll see "Environment Variables". Add them there. You don't need to add the google ones above. 
+
+ALSO, if the allow-unauthenticated didn't work (I've noticed this happen), click the service, go to permissions and [see this](https://cloud.google.com/run/docs/securing/managing-access?authuser=1&_ga=2.204426711.-650445000.1578069338#making_a_service_public).
+
 ## Auto Deploying
 
 Go to https://github.com/treeder/YOUR_REPO/settings/secrets and add all of the above env vars.
 
-Copy the GitHub action in this repo at [.github/worksflows/main.yml](.github/worksflows/main.yml) and put
+Copy the GitHub action in this repo at [.github/workflows/main.yml](.github/worksflows/main.yml) and put
 it in the same location in your repo. Commit it and push it then check the Actions tab for progress.
+
+## User interface
+
+### Deploying Static App to Firebase
+
+Such as a Flutter, Angular or React app.
+
+TODO: add a flutter.yml action file to this repo (from swapper). 
+
+Need a `FIREBASE_TOKEN` for GitHub which you can get with:
+
+```sh
+firebase login:ci
+```
+
+### For firebase auth / google sign in
+
+You'll need to whitelist the \*.web.app domains from firebase to use the web.app version. Go to `https://console.cloud.google.com/apis/credentials`, edit the OAuth 2.0 Client ID that says `Web client (auto created by Google Service)` and add the domains there. 
+
+TODO: probably have to do the same on the production domains.
+
