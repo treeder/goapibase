@@ -8,7 +8,7 @@
 * Go to https://console.cloud.google.com/ , choose your firebase project then:
   * search for "Cloud Build API" and enable it.
   * search for "Cloud Run API" and enable it.
-  * In IAM & admin, choose the firebase-adminsdk service account, click the edit (pencil) and add Project Owner role.
+  * In IAM & admin, choose the firebase-adminsdk service account, click the edit (pencil) and add Project Owner role. (see below for reduced scope)
 * Back in Firebase, go to settings -> Service accounts, click "Generate new private key". This will download a JSON file. 
 * Run `base64 -w 0 account.json` to get encoded version of the file
 
@@ -84,3 +84,15 @@ You'll need to whitelist the \*.web.app domains from firebase to use the web.app
 
 TODO: probably have to do the same on the production domains.
 
+
+## Reducing firebase-adminsdk scope
+
+Seems the following roles may be all that's needed:
+
+```
+Cloud Build Service Account
+Firebase Admin SDK Administrator Service Agent
+Service Account Token Creator
+Cloud Run Admin
+Storage Object Admin
+```
