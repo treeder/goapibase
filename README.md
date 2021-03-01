@@ -5,25 +5,24 @@
 * Create a Firebase project
 * Click database and create it
 * Click gear and enable billing
+* Go to settings -> Service accounts, click "Generate new private key". This will download a JSON file. 
+* Run `base64 -w 0 account.json` to get encoded version of the file (for secrets)
 * Go to https://console.cloud.google.com/ , choose your firebase project then:
   * search for "Cloud Build API" and enable it.
   * search for "Cloud Run API" and enable it.
   * In IAM & admin, choose the firebase-adminsdk service account, click the edit (pencil) and add Project Owner role. (see below for reduced scope)
-* Back in Firebase, go to settings -> Service accounts, click "Generate new private key". This will download a JSON file. 
-* Run `base64 -w 0 account.json` to get encoded version of the file
 
 ## Setup local environment
 
-Set local env vars:
+Set local env vars. Easiest way is to create a file in `secrets/dev.env` with the following (be sure to .gitignore secrets/), then `source secrets/dev.env`. 
+
 
 ```sh
 export G_PROJECT_ID=FIREBASE_ID
-export G_KEY=BASE64_ENCODED_STRING_FROM_ABOVE
 export G_SERVICE_NAME=example
+export G_KEY=BASE64_ENCODED_STRING_FROM_ABOVE
 ```
 
-Easiest way is to create a file with lines like above, eg: `secrets.env` (be sure to .gitignore that), then 
-just `source secrets.env`. 
 
 ## Code
 
@@ -68,15 +67,7 @@ it in the same location in your repo. Commit it and push it then check the Actio
 
 ### Deploying Static App to Firebase
 
-Such as a Flutter, Angular or React app.
-
-TODO: add a flutter.yml action file to this repo (from swapper). 
-
-Need a `FIREBASE_TOKEN` for GitHub which you can get with:
-
-```sh
-firebase login:ci
-```
+REDO
 
 ### For firebase auth / google sign in
 
