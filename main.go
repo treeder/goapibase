@@ -18,10 +18,11 @@ package goapibase
 import (
 	"context"
 	"fmt"
+	"net"
 	"net/http"
 
-	"github.com/go-chi/chi"
-	"github.com/go-chi/chi/middleware"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/rs/cors"
 	"github.com/treeder/gotils"
 	"go.uber.org/zap"
@@ -43,7 +44,10 @@ func InitRouter(ctx context.Context) chi.Router {
 
 func Start(ctx context.Context, port int, r chi.Router) error {
 	gotils.L(ctx).Sugar().Infof("Starting API server on port %v", port)
-	srv := http.Server{Addr: fmt.Sprintf("0.0.0.0:%v", port), Handler: chi.ServerBaseContext(ctx, r)}
+	srv := http.Server{Addr: fmt.Sprintf("0.0.0.0:%v", port), Handler: r}
+	srv.BaseContext = func(_ net.Listener) context.Context {
+		return ctx
+	}
 	err := srv.ListenAndServe()
 	if err != http.ErrServerClosed {
 		gotils.L(ctx).Error("error in http server", zap.Error(err))
