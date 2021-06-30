@@ -1,6 +1,6 @@
-/* Quick start package for golang servers using Chi as router
+/*
 
-Note: Must setup gotils.Logger first.
+Quick start package for golang servers using Chi as router
 
 Example:
 

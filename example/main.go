@@ -14,7 +14,7 @@ import (
 func main() {
 	ctx := context.Background()
 
-	acc, opts, err := gcputils.AccountAndCredentialsFromEnv("G_KEY")
+	opts, projectID, err := gcputils.CredentialsAndProjectIDFromEnv("G_KEY", "G_PROJECT_ID")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,7 +22,7 @@ func main() {
 	// Setup logging, optional, typically will work fine without this, but depends on GCP service you're using
 	// gcputils.InitLogging()
 
-	firebaseApp, err := firetils.New(ctx, acc.ProjectID, opts)
+	firebaseApp, err := firetils.New(ctx, projectID, opts)
 	if err != nil {
 		gotils.L(ctx).Sugar().Fatalf("couldn't init firebase newapp: %v\n", err)
 	}
