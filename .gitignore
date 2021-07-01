@@ -1,3 +1,4 @@
 secrets/
 secrets.env
 example/example
+*.code-workspace
