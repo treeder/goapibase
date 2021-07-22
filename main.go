@@ -23,9 +23,9 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	gonanoid "github.com/matoous/go-nanoid/v2"
 	"github.com/rs/cors"
-	"github.com/treeder/gotils"
-	"go.uber.org/zap"
+	"github.com/treeder/gotils/v2"
 )
 
 func InitRouter(ctx context.Context) chi.Router {
@@ -43,47 +43,27 @@ func InitRouter(ctx context.Context) chi.Router {
 }
 
 func Start(ctx context.Context, port int, r chi.Router) error {
-	gotils.L(ctx).Sugar().Infof("Starting API server on port %v", port)
+	gotils.LogBeta(ctx, "info", "Starting API server on port %v", port)
 	srv := http.Server{Addr: fmt.Sprintf("0.0.0.0:%v", port), Handler: r}
 	srv.BaseContext = func(_ net.Listener) context.Context {
 		return ctx
 	}
 	err := srv.ListenAndServe()
 	if err != http.ErrServerClosed {
-		gotils.L(ctx).Error("error in http server", zap.Error(err))
+		gotils.LogBeta(ctx, "error", "error in http.ListenAndServe: %v", err)
 	}
 	return err
 }
 
 func SetupCtx(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ctx := gotils.WithRequestID(r.Context())
-		ctx = gotils.AddFields(ctx, zap.String("path", r.URL.Path))
+		ctx := r.Context()
+		id, _ := gonanoid.New()
+		ctx = gotils.With(ctx, "requestID", id)
+		ctx = gotils.With(ctx, "path", r.URL.Path)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
-
-// func Recoverer(next http.Handler) http.Handler {
-// 	fn := func(w http.ResponseWriter, r *http.Request) {
-// 		defer func() {
-// 			if rvr := recover(); rvr != nil && rvr != http.ErrAbortHandler {
-
-// 				logEntry := GetLogEntry(r)
-// 				if logEntry != nil {
-// 					logEntry.Panic(rvr, debug.Stack())
-// 				} else {
-// 					PrintPrettyStack(rvr)
-// 				}
-
-// 				w.WriteHeader(http.StatusInternalServerError)
-// 			}
-// 		}()
-
-// 		next.ServeHTTP(w, r)
-// 	}
-
-// 	return http.HandlerFunc(fn)
-// }
 
 // WithValue is a middleware that sets a given key/value in a context chain.
 func WithValue(key interface{}, val interface{}) func(next http.Handler) http.Handler {

@@ -8,7 +8,7 @@ import (
 	"github.com/treeder/firetils"
 	"github.com/treeder/gcputils"
 	"github.com/treeder/goapibase"
-	"github.com/treeder/gotils"
+	"github.com/treeder/gotils/v2"
 )
 
 func main() {
