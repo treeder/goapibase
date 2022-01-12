@@ -39,6 +39,9 @@ func InitRouter(ctx context.Context) chi.Router {
 		AllowCredentials: false,
 		MaxAge:           3600,
 	}).Handler)
+	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
+		gotils.WriteError(w, http.StatusNotFound, gotils.ErrNotFound)
+	})
 	return r
 }
 
