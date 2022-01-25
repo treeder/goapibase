@@ -26,6 +26,8 @@ import (
 	gonanoid "github.com/matoous/go-nanoid/v2"
 	"github.com/rs/cors"
 	"github.com/treeder/gotils/v2"
+	"golang.org/x/net/http2"
+	"golang.org/x/net/http2/h2c"
 )
 
 func InitRouter(ctx context.Context) chi.Router {
@@ -47,7 +49,11 @@ func InitRouter(ctx context.Context) chi.Router {
 
 func Start(ctx context.Context, port int, r chi.Router) error {
 	gotils.LogBeta(ctx, "info", "Starting API server on port %v", port)
-	srv := http.Server{Addr: fmt.Sprintf("0.0.0.0:%v", port), Handler: r}
+	h2s := &http2.Server{} // http2 upgrades: https://www.mailgun.com/blog/http-2-cleartext-h2c-client-example-go/
+	srv := &http.Server{
+		Addr:    fmt.Sprintf("0.0.0.0:%v", port),
+		Handler: h2c.NewHandler(r, h2s), // HTTP/2 Cleartext handler
+	}
 	srv.BaseContext = func(_ net.Listener) context.Context {
 		return ctx
 	}
