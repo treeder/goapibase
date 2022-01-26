@@ -47,8 +47,24 @@ func InitRouter(ctx context.Context) chi.Router {
 	return r
 }
 
+// Regular server start
 func Start(ctx context.Context, port int, r chi.Router) error {
-	gotils.LogBeta(ctx, "info", "Starting API server on port %v", port)
+	gotils.Logf(ctx, "info", "Starting API server on port %v", port)
+	srv := http.Server{Addr: fmt.Sprintf("0.0.0.0:%v", port), Handler: r}
+	srv.BaseContext = func(_ net.Listener) context.Context {
+		return ctx
+	}
+	err := srv.ListenAndServe()
+	if err != http.ErrServerClosed {
+		gotils.LogBeta(ctx, "error", "error in http.ListenAndServe: %v", err)
+	}
+	return err
+}
+
+// Starts with H2C support, should use when load balancer terminates the connection
+// More info: https://cloud.google.com/run/docs/configuring/http2
+func StartH2C(ctx context.Context, port int, r chi.Router) error {
+	gotils.Logf(ctx, "info", "Starting API server on port %v", port)
 	h2s := &http2.Server{} // http2 upgrades: https://www.mailgun.com/blog/http-2-cleartext-h2c-client-example-go/
 	srv := &http.Server{
 		Addr:    fmt.Sprintf("0.0.0.0:%v", port),
