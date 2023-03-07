@@ -7,11 +7,11 @@ require (
 	github.com/matoous/go-nanoid/v2 v2.0.0
 	github.com/rs/cors v1.8.2
 	github.com/treeder/gotils/v2 v2.0.12
-	golang.org/x/net v0.0.0-20220121210141-e204ce36a2ba
+	golang.org/x/net v0.7.0
 )
 
 require (
 	github.com/stretchr/testify v1.7.0 // indirect
-	golang.org/x/text v0.3.8 // indirect
+	golang.org/x/text v0.7.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
