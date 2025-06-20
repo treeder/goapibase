@@ -3,7 +3,7 @@ module github.com/treeder/goapibase
 go 1.20
 
 require (
-	github.com/go-chi/chi/v5 v5.0.8
+	github.com/go-chi/chi/v5 v5.2.2
 	github.com/matoous/go-nanoid/v2 v2.0.0
 	github.com/rs/cors v1.8.3
 	github.com/treeder/gotils/v2 v2.1.9
